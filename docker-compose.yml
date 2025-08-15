@@ -1,12 +1,16 @@
 version: '3.1'
 services:
   tesla-ble-http-proxy:
-    image: wimaha/tesla-ble-http-proxy:latest
+    # image: wimaha/tesla-ble-http-proxy:latest
+    build: .
     container_name: tesla-ble-http-proxy
     volumes:
       - ~/TeslaBleHttpProxy/key:/key
+      # - ./key:/key
       - /var/run/dbus:/var/run/dbus
     restart: always
+    # ports:
+    #   - "8080:8080"
     privileged: true
     network_mode: host
     cap_add:
